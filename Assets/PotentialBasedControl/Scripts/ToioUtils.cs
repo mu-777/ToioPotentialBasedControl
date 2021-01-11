@@ -6,12 +6,11 @@ using toio;
 
 public static class ToioUtils
 {
-    public static void SetLEDColorToCubeList(List<Cube> cubes, Color color)
+    public static void SetLEDColorToCubeList(List<Cube> cubes, Color color, int durationMs= 0)
     {
-        var duration = 0;
         foreach(var c in cubes)
         {
-            c.TurnLedOn(color, duration);
+            c.TurnLedOn(color, durationMs);
         }
     }
 
