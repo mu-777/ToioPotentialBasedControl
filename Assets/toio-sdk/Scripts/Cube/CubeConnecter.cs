@@ -53,7 +53,7 @@ namespace toio
         }
 
 
-#if UNITY_EDITOR
+#if UNITY_EDITOR || SIMULATOR_ONLY
         public class Impl : CubeConnecterInterface
         {
             public async UniTask<Cube> Connect(BLEPeripheralInterface peripheral)
@@ -86,7 +86,7 @@ namespace toio
                 return default;
             }
         }
-#elif (UNITY_IOS || UNITY_ANDROID)
+#elif (UNITY_IOS || UNITY_ANDROID) && !SIMULATOR_ONLY
         public class Impl : CubeConnecterInterface
         {
             private bool isConnecting = false;
@@ -242,7 +242,7 @@ namespace toio
                 return version;
             }
         }
-#elif UNITY_WEBGL
+#elif UNITY_WEBGL && !SIMULATOR_ONLY
         public class Impl : CubeConnecterInterface
         {
             private Dictionary<string, Func<BLEPeripheralInterface, Dictionary<string, BLECharacteristicInterface>, CubeReal>> versionTable = new Dictionary<string, Func<BLEPeripheralInterface, Dictionary<string, BLECharacteristicInterface>, CubeReal>>();

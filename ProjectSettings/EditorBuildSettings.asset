@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/PotentialBasedControl/Scenes/PotentialBasedControl.unity
+    guid: 53a8bcc21eaa91c429d1ea1dd10e7c25
   m_configObjects: {}

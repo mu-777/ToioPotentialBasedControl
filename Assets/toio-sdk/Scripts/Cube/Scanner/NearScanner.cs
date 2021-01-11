@@ -36,7 +36,7 @@ namespace toio
         // --- public methods ---
         public NearScanner(int satisfiedNum, NearScannerInterface impl = null)
         {
-#if UNITY_WEBGL
+#if UNITY_WEBGL && !SIMULATOR_ONLY
             Debug.Log("[NearScanner]NearScanner doesn't run on the web");
 #endif
             if (null != impl)
@@ -61,7 +61,7 @@ namespace toio
             this.impl.ScanAsync(coroutineObject, callback, autoRunning);
         }
 
-#if UNITY_EDITOR
+#if (UNITY_EDITOR || SIMULATOR_ONLY)
         /// <summary>
         /// Impl for Unity.
         /// </summary>
@@ -122,7 +122,7 @@ namespace toio
                 this.peripheralList.Add(peri);
             }
         }
-#elif (UNITY_IOS || UNITY_ANDROID || UNITY_WEBGL)
+#elif (UNITY_IOS || UNITY_ANDROID || UNITY_WEBGL) && !SIMULATOR_ONLY
         /// <summary>
         /// Impl for Mobile(iOS, Android) and WebGL
         /// </summary>
@@ -151,12 +151,12 @@ namespace toio
                 this.isScanning = false;
                 this.autoRunning = false;
 
-#if (UNITY_IOS || UNITY_ANDROID)
+#if (UNITY_IOS || UNITY_ANDROID) && !SIMULATOR_ONLY
                 if(!BLEService.Instance.hasImplement)
                 {
                     BLEService.Instance.SetImplement(new BLEMobileService());
                 }
-#elif UNITY_WEBGL
+#elif UNITY_WEBGL && !SIMULATOR_ONLY
                 if(!BLEService.Instance.hasImplement)
                 {
                     BLEService.Instance.SetImplement(new BLEWebService());
