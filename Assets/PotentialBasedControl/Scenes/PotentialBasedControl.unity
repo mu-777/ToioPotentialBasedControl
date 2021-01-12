@@ -1183,6 +1183,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bd6ea65c87536d49ac5878fd9e412fe, type: 3}
+--- !u!1 &1351059321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8138842910631678673, guid: cdb3cb207738d3b45ade7abf174b8f7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 879129548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1351059326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351059321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47597db5f98915c4bb1c7cdd2175f4d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  focus: {x: 0, y: 0, z: 0}
+  focusObj: {fileID: 0}
+  resetCameraPoseKey: 32
+  showInstWindow: 1
 --- !u!1 &1455485899
 GameObject:
   m_ObjectHideFlags: 0
