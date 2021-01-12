@@ -17,6 +17,9 @@ namespace toio.Simulator
         CubeSimulator cube;
         Rigidbody rb;
 
+        public bool isActiveDragging = true;
+        public bool isActivePulling = true;
+
         //  Drag and Drop
         public static bool isDragging {get; protected set;} = false;
         static bool droppable = false;
@@ -219,6 +222,10 @@ namespace toio.Simulator
 
         void DragCubeStart()
         {
+            if (!isActiveDragging)
+            {
+                return;
+            }
             // Stop the cube
             rb.useGravity = false;
             rb.velocity = Vector3.zero;
@@ -245,6 +252,11 @@ namespace toio.Simulator
 
         void DragCube()
         {
+            if (!isActiveDragging)
+            {
+                return;
+            }
+
             // Mouse Wheel to rotate cube
             transform.eulerAngles = new Vector3(
                 cube.transform.eulerAngles.x,
@@ -315,6 +327,10 @@ namespace toio.Simulator
 
         void DragCubeEnd()
         {
+            if (!isActiveDragging)
+            {
+                return;
+            }
             // Recover physics
             rb.useGravity = true;
 
@@ -337,12 +353,20 @@ namespace toio.Simulator
 
         void PullCubeStart()
         {
+            if (!isActivePulling)
+            {
+                return;
+            }
             pullIndicator.gameObject.SetActive(true);
             Cursor.visible = false;
         }
 
         void PullCube()
         {
+            if (!isActivePulling)
+            {
+                return;
+            }
             var camera = Camera.main;
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             var t = (pullInitialY - ray.origin.y) / ray.direction.y;
@@ -369,6 +393,10 @@ namespace toio.Simulator
 
         void PullCubeEnd()
         {
+            if (!isActivePulling)
+            {
+                return;
+            }
             if (_pullIndicator!=null)
                 _pullIndicator.gameObject.SetActive(false);
             Cursor.visible = true;
